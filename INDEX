@@ -1,0 +1,11 @@
+all.regs                Goodness of fit measures for a regression
+                        hierarchy
+combos                  All combinations of a hierarchy of models of n
+                        variables
+hier.part               Goodness of fit calculation and hierarchical
+                        partitioning
+hier.part.data          Example data for hier.part
+partition               Hierarchical partitioning from a list of
+                        goodness of fit measures
+rand.hp                 Randomization test for hierarchical
+                        partitioning
