@@ -44,7 +44,8 @@ contribution (I) and its conjoint contribution with all other variables
 (J).
 
 At this stage, the partition routine will not run for more than 12
-independent variables.  
+independent variables. This function requires the gtools package in
+the gregmisc bundle 
 }
 
 \value{
@@ -77,7 +78,7 @@ independent variables.
   Hatt, B. E., Fletcher, T. D., Walsh, C. J. and Taylor, S. L. 2004 The
   influence of urban density and drainage infrastructure on the
   concentrations and loads of pollutants in small
-  streams. \emph{Environmental Management} \bold{online first}.
+  streams. \emph{Environmental Management} \bold{34}, 112--124.
   
   Mac Nally, R. 2000 Regression and model building in conservation
   biology, biogeography and ecology: the distinction between and
@@ -86,11 +87,11 @@ independent variables.
 
   Walsh, C. J., Papas, P. J., Crowther, D., Sim, P. T., and Yoo, J. 2004
   Stormwater drainage pipes as a threat to a stream-dwelling amphipod of
-  conservation significance, Austrogammarus australis, in south-eastern
+  conservation significance, \emph{Austrogammarus australis}, in south-eastern
   Australia. \emph{Biodiversity and Conservation} \bold{13}, 781--793.
 }
-\see also{
-  \code{all.regs}, \code{partition}, \code{glm}, \code{rand.hp}
+ \seealso{
+  \code{\link{all.regs}}, \code{\link{partition}}, \code{\link{rand.hp}}
   }
  \examples{
            #linear regression of log(electrical conductivity) in streams

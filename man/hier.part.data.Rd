@@ -45,11 +45,11 @@
   Hatt, B. E., Fletcher, T. D., Walsh, C. J. and Taylor, S. L. 2004 The
   influence of urban density and drainage infrastructure on the
   concentrations and loads of pollutants in small
-  streams. \emph{Environmental Management} \bold{online first}.
+  streams. \emph{Environmental Management} \bold{34}, 112--124.
   
   Walsh, C. J., Papas, P. J., Crowther, D., Sim, P. T., and Yoo, J. 2004
   Stormwater drainage pipes as a threat to a stream-dwelling amphipod of
-  conservation significance, Austrogammarus australis, in south-eastern
+  conservation significance, \emph{Austrogammarus australis}, in southeastern
   Australia. \emph{Biodiversity and Conservation} \bold{13}, 781--793.
 
 }

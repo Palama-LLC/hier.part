@@ -70,10 +70,10 @@ independent variables.
   Hatt, B. E., Fletcher, T. D., Walsh, C. J. and Taylor, S. L. 2004 The
   influence of urban density and drainage infrastructure on the
   concentrations and loads of pollutants in small
-  streams. \emph{Environmental Management} \bold{online first}.
+  streams. \emph{Environmental Management} \bold{34}, 112--124.
  }
-\see also{
-  \code{all.regs}, \code{partition}, \code{glm}, \code{rand.hp}
+\seealso{
+  \code{\link{all.regs}}, \code{\link{partition}}, \code{\link{rand.hp}}
   }
  \examples{
            #linear regression of log(electrical conductivity) in streams

@@ -39,7 +39,8 @@ all.regs(y, xcan, family = "gaussian", gof = "RMSPE", print.vars = FALSE)
 This function calculates goodness of fit measures for the entire
 hierarchy of models using all combinations of N dependent variables, and
 returns them as an ordered list ready for input into the function
-\code{partition}.      
+\code{partition}. This function requires the gtools package in
+the gregmisc bundle      
 }
 
 \value{
@@ -60,16 +61,16 @@ returns them as an ordered list ready for input into the function
   Hatt, B. E., Fletcher, T. D., Walsh, C. J. and Taylor, S. L. 2004 The
   influence of urban density and drainage infrastructure on the
   concentrations and loads of pollutants in small
-  streams. \emph{Environmental Management} \bold{online first}.
+  streams. \emph{Environmental Management} \bold{34}, 112--124.
   
   Walsh, C. J., Papas, P. J., Crowther, D., Sim, P. T., and Yoo, J. 2004
   Stormwater drainage pipes as a threat to a stream-dwelling amphipod of
-  conservation significance, Austrogammarus australis, in south-eastern
+  conservation significance, \emph{Austrogammarus australis}, in southeastern
   Australia. \emph{Biodiversity and Conservation} \bold{13}, 781--793.
  }
 
-  \see also{
-  \code{hier.part}, \code{partition}, \code{glm}, \code{rand.hp}
+ \seealso{
+  \code{\link{hier.part}}, \code{\link{partition}}, \code{\link{rand.hp}}
   }
  \examples{
            #linear regression of log(electrical conductivity) in streams

@@ -22,7 +22,7 @@ else
 
 combos1 <- function(n)
   {
-  require(gregmisc)
+  require(gtools)
   x <- cbind(combinations(n,1,1:n),array(0,dim=c(n,n-1)))
   for(i in 2:n)
    {
