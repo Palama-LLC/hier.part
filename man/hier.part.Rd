@@ -39,9 +39,21 @@ hierarchy of models using all combinations of N independent variables
 using the function \code{all.regs}.  It takes the list of goodness
 of fit measures and, using the \code{partition} function, applies the
 hierarchical partitioning algorithm of Chevan and Sutherland (1991)
-to return a simple table listing of each variable, its independent
+to return a simple table listing each variable, its independent
 contribution (I) and its conjoint contribution with all other variables
 (J).
+
+Note earlier versions of hier.part (<1.0) produced a matrix and barplot
+of percentage distribution of effects as a percentage of the sum of all
+Is and Js, as portrayed in Hatt et al. (2004) and Walsh et al. (2004).
+This version plots the percentage distribution of independent effects
+only. The sum of Is equals the goodness of fit measure of the full model
+minus the goodness of fit measure of the null model.
+
+The distribution of joint effects shows the relative contribution of
+each variable to shared variability in the full model. Negative joint
+effects are possible for variables that act as suppressors of other
+variables (Chevan and Sutherland 1991).
 
 At this stage, the partition routine will not run for more than 12
 independent variables. This function requires the gtools package in
@@ -62,9 +74,8 @@ the gregmisc bundle
     contribution for each independent variable
   }
 
-  \item{IJ.perc}{
-    a data frame of I and J expressed as percentage of
-    total explained variance
+  \item{I.perc}{
+    a data frame of I as a percentage of total explained variance
   }
 }
 \author{

@@ -159,8 +159,10 @@ partition <- function(gfs, pcan, var.names = NULL)
       IJ <- data.frame(t(data.frame(t(IJ), row.names = c("I","J"))),
                        row.names = var.names)
       IJ.perc <- IJ*100/sum(IJ)
+      I <- data.frame(I=IJ[,1],row.names=var.names)
+      I.perc <- I*100/sum(I)
       IJ <- cbind(IJ, "Total" = IJ$I +IJ$J)
-  list(gfs = gfs, IJ = IJ, IJ.perc = IJ.perc)
+  list(gfs = gfs, IJ = IJ, I.perc = I.perc)
      }
     }
 
@@ -176,12 +178,12 @@ hier.part <- function(y, xcan, family = "gaussian", gof = "RMSPE",
     HP <- partition(gfs, pcan, var.names = names(data.frame(xcan)))
     if(barplot)
       {
-       ymin <- min(c(0, floor(min(HP$IJ.perc)*0.1)*10))
-       ymax <- ceiling(max(HP$IJ.perc)*0.1)*10
-       barplot(t(HP$IJ.perc), col = c(1,0), beside = TRUE,
-               legend.text = c("Independent", "Joint"), ylim = c(ymin, ymax))
+       ymin <- min(c(0, floor(min(HP$I.perc)*0.1)*10))
+       ymax <- ceiling(max(HP$I.perc)*0.1)*10
+       barplot(t(HP$I.perc), col = c(1), ylim = c(ymin, ymax),
+               ylab="% Independent effects (%I)")
       }
-    list(gfs = gfs, IJ = HP$IJ, IJ.perc = HP$IJ.perc)
+    list(gfs = gfs, IJ = HP$IJ, I.perc = HP$I.perc)
      }
     }         
 

@@ -34,10 +34,23 @@ and Sutherland (1991) to return a simple table listing of each variable,
 its independent contribution (I) and its conjoint contribution with all
 other variables (J).  The output is identical to the function
 \code{hier.part}, which takes the dependent and independent variable
-data as its input
+data as its input.
+
+Note earlier versions of partition (hier.part<1.0) produced a matrix and
+barplot of percentage distribution of effects as a percentage of the sum
+of all Is and Js, as portrayed in Hatt et al. (2004) and Walsh et al.
+(2004). This version plots the percentage distribution of independent
+effects only. The sum of Is equals the goodness of fit measure of the
+full model minus the goodness of fit measure of the null model.
+
+The distribution of joint effects shows the relative contribution of
+each variable to shared variability in the full model. Negative joint
+effects are possible for variables that act as suppressors of other
+variables (Chevan and Sutherland 1991).
 
 At this stage, the partition routine will not run for more than 12
-independent variables.
+independent variables. This function requires the gtools package in the
+gregmisc bundle
 }
 
 \value{
@@ -54,9 +67,12 @@ independent variables.
     contribution for each independent variable
   }
 
-  \item{IJ.perc}{
-    a data frame of I and J expressed as percentage of
-    total explained variance
+  \item{I.perc}{
+    a data frame of I as a percentage of total explained variance
+  }
+  
+  \item{J.perc}{
+    a data frame of J as a percentage of sum of all Js
   }
 }
 \author{
