@@ -71,26 +71,41 @@ independent variables.
   code written by Ralph MacNally \email{Ralph.MacNally@sci.monash.edu.au}.
 }
 \references{
-  Chevan, A. and Sutherland, M. (1991) Hierarchical Partitioning. The
-  American Statistician 45: 90-96.
-  Mac Nally, R. (2000) Regression and model building in conservation
+  Chevan, A. and Sutherland, M. 1991 Hierarchical Partitioning. \emph{The
+  American Statistician} \bold{45}, 90--96.
+
+  Hatt, B. E., Fletcher, T. D., Walsh, C. J. and Taylor, S. L. 2004 The
+  influence of urban density and drainage infrastructure on the
+  concentrations and loads of pollutants in small
+  streams. \emph{Environmental Management} \bold{online first}.
+  
+  Mac Nally, R. 2000 Regression and model building in conservation
   biology, biogeography and ecology: the distinction between and
-  reconciliation of 'predictive' and 'explanatory' models. Biodiversity
-  and Conservation 9: 655-671.
+  reconciliation of 'predictive' and 'explanatory' models. \emph{Biodiversity
+  and Conservation} \bold{9}, 655--671.
+
+  Walsh, C. J., Papas, P. J., Crowther, D., Sim, P. T., and Yoo, J. 2004
+  Stormwater drainage pipes as a threat to a stream-dwelling amphipod of
+  conservation significance, Austrogammarus australis, in south-eastern
+  Australia. \emph{Biodiversity and Conservation} \bold{13}, 781--793.
 }
 \see also{
   \code{all.regs}, \code{partition}, \code{glm}, \code{rand.hp}
   }
  \examples{
-           #linear regression with four independent variables
-           data(urban)
-           env <- urban[,3:6]
-           hier.part(urban$chl, env, fam = "gaussian", gof = "Rsqu")
+           #linear regression of log(electrical conductivity) in streams
+           #against seven independent variables describing catchment
+           #characteristics (from Hatt et al. 2004)
+           data(urbanwq)
+           env <- urbanwq[,2:8]
+           hier.part(urbanwq$lec, env, fam = "gaussian", gof = "Rsqu")
 
-           #logistic regression with four independent variables
-           data(urban1)
-           env1 <- urban1[,2:5]
-           hier.part(urban1$pa, env1, fam = "binomial", gof = "logLik")
+           #logistic regression of an amphipod species occurrence in
+           #streams against four independent variables describing
+           #catchment characteristics (from Walsh et al. 2004)
+           data(amphipod)
+           env1 <- amphipod[,2:5]
+           hier.part(amphipod$australis, env1, fam = "binomial", gof = "logLik")
 }
 \keyword{}
 

@@ -56,20 +56,37 @@ returns them as an ordered list ready for input into the function
   Chris Walsh \email{Chris.Walsh@sci.monash.edu.au}.
 }
 
-\see also{
+\references{
+  Hatt, B. E., Fletcher, T. D., Walsh, C. J. and Taylor, S. L. 2004 The
+  influence of urban density and drainage infrastructure on the
+  concentrations and loads of pollutants in small
+  streams. \emph{Environmental Management} \bold{online first}.
+  
+  Walsh, C. J., Papas, P. J., Crowther, D., Sim, P. T., and Yoo, J. 2004
+  Stormwater drainage pipes as a threat to a stream-dwelling amphipod of
+  conservation significance, Austrogammarus australis, in south-eastern
+  Australia. \emph{Biodiversity and Conservation} \bold{13}, 781--793.
+ }
+
+  \see also{
   \code{hier.part}, \code{partition}, \code{glm}, \code{rand.hp}
   }
  \examples{
-           #linear regression with four independent variables
-           data(urban)
-           env <- urban[,3:6]
-           all.regs(urban$chl, env, fam = "gaussian", gof = "Rsqu",
-                    print.vars = TRUE)
+           #linear regression of log(electrical conductivity) in streams
+           #against seven independent variables describing catchment
+           #characteristics (from Hatt et al. 2004)
+           data(urbanwq)
+           env <- urbanwq[,2:8]
+           all.regs(urbanwq$lec, env, fam = "gaussian", gof = "Rsqu",
+           print.vars = TRUE)
 
-           #logistic regression with four independent variables
-           data(urban1)
-           env1 <- urban1[,2:5]
-           all.regs(urban1$pa, env1, fam = "binomial", gof = "logLik")
+           #logistic regression of an amphipod species occurrence in
+           #streams against four independent variables describing
+           #catchment characteristics (from Walsh et al. 2004)
+           data(amphipod)
+           env1 <- amphipod[,2:5]
+           all.regs(amphipod$australis, env1, fam = "binomial",
+	   gof = "logLik", print.vars = TRUE)
 }
 \keyword{}
 

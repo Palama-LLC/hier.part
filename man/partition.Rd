@@ -64,18 +64,26 @@ independent variables.
   code written by Ralph MacNally \email{Ralph.MacNally@sci.monash.edu.au}.
 }
 \references{
-  Chevan, and Sutherland (1991) The American Statistician 45: 90
-}
+  Chevan, A. and Sutherland, M. 1991 Hierarchical Partitioning. \emph{The
+  American Statistician} \bold{45}, 90--96.
+
+  Hatt, B. E., Fletcher, T. D., Walsh, C. J. and Taylor, S. L. 2004 The
+  influence of urban density and drainage infrastructure on the
+  concentrations and loads of pollutants in small
+  streams. \emph{Environmental Management} \bold{online first}.
+ }
 \see also{
   \code{all.regs}, \code{partition}, \code{glm}, \code{rand.hp}
   }
  \examples{
-           #linear regression with four independent variables
-           data(urban)
-           env <- urban[,3:6]
-           gofs <- all.regs(urban$chl, env,
-                            fam = "gaussian", gof = "Rsqu")
-           partition(gofs, pcan = 4, var.names = names(urban[,3:6]))
+           #linear regression of log(electrical conductivity) in streams
+           #against seven independent variables describing catchment
+           #characteristics (from Hatt et al. 2004)
+           data(urbanwq)
+           env <- urbanwq[,2:8]
+           gofs <- all.regs(urbanwq$lec, env, fam = "gaussian",
+           gof = "Rsqu", print.vars = TRUE)
+           partition(gofs, pcan = 7, var.names = names(urbanwq[,2,8]))
 
            #hierarchical partitioning of logistic and linear regression
            #goodness of fit measures from Chevan and Sutherland (1991) 

@@ -61,36 +61,53 @@ the randomized dataset.
     statistical significance.  Z-scores are cacluated as
     (observed - mean(randomizations))/sd(randomizations),
     and statistical significance (*) is based on upper 0.95 confidence
-    limit (Z >= 1.65).
+    limit (\eqn{Z >= 1.65}).
     }
 }
 \author{
   Chris Walsh \email{Chris.Walsh@sci.monash.edu.au}.
 }
 \references{
-  Mac Nally, R. (2000) Regression and model building in conservation
+  Hatt, B. E., Fletcher, T. D., Walsh, C. J. and Taylor, S. L. 2004 The
+  influence of urban density and drainage infrastructure on the
+  concentrations and loads of pollutants in small
+  streams. \emph{Environmental Management} \bold{online first}.
+  
+  Mac Nally, R. 2000 Regression and model building in conservation
   biology, biogeography and ecology: the distinction between and
-  reconciliation of 'predictive' and 'explanatory' models. Biodiversity
-  and Conservation 9: 655-671.
-  MacNally, R. (2002) Multiple regression and inference in conservation
+  reconciliation of 'predictive' and 'explanatory' models. \emph{Biodiversity
+  and Conservation} \bold{9}, 655--671.
+
+  MacNally, R. 2002 Multiple regression and inference in conservation
   biology and ecology: further comments on identifying important
-  predictor variables. Biodiversity and Conservation 11: 1397-1401.
-  }
+  predictor variables. \emph{Biodiversity and Conservation} \bold{11},
+  1397--1401.
+
+  Walsh, C. J., Papas, P. J., Crowther, D., Sim, P. T., and Yoo, J. 2004
+  Stormwater drainage pipes as a threat to a stream-dwelling amphipod of
+  conservation significance, Austrogammarus australis, in south-eastern
+  Australia. \emph{Biodiversity and Conservation} \bold{13}, 781--793.
+}
 
 \see also{
   \code{hier.part}, \code{partition}, \code{glm}
   }
   \examples{
-            #linear regression with four independent variables
-            data(urban)
-            env <- urban[,3:6]
-            rand.hp(urban$chl, env, fam = "gaussian", gof = "Rsqu")$Iprobs
+           #linear regression of log(electrical conductivity) in streams
+           #against four independent variables describing catchment
+           #characteristics (from Hatt et al. 2004)
+           data(urbanwq)
+           env <- urbanwq[,2:5]
+           rand.hp(urbanwq$lec, env, fam = "gaussian", gof = "Rsqu")$Iprobs
 
-            #logistic regression with four independent variables
-            data(urban1)
-            env1 <- urban1[,2:5]
-            rand.hp(urban1$pa, env1, fam = "binomial", gof = "logLik")$Iprobs
-
+           #logistic regression of an amphipod species occurrence in
+           #streams against four independent variables describing
+           #catchment characteristics (from Walsh et al. 2004)
+           data(amphipod)
+           env1 <- amphipod[,2:5]
+           rand.hp(amphipod$australis, env1, fam = "binomial",
+           gof = "logLik")$Iprobs
 }
+
 \keyword{}
 
