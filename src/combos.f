@@ -30,7 +30,7 @@ c
       nmr = n - r
 c        Construct a large enough array to hold all nCr lists
 c
-      call m_l_a(n, r)
+      call mla(n, r)
 c
 c        Initialize J(1) to lower limit separately, since lower limit for
 c        each index depends on lower limit for previous index
@@ -50,7 +50,7 @@ c        combination.  The call to Subroutine load_list may be replaced by
 c        statements to process the current combination.
 c
     3 kount = kount + 1
-      call l_list(n, r, j, kount)
+      call llist(n, r, j, kount)
 c
 c        Increment the first possible index (of loop i) among indices of
 c        loops R, R-1,...,1

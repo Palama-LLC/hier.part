@@ -77,7 +77,7 @@ gregmisc bundle
 }
 \author{
   Chris Walsh \email{Chris.Walsh@sci.monash.edu.au} using c and fortran
-  code written by Ralph MacNally \email{Ralph.MacNally@sci.monash.edu.au}.
+  code written by Ralph Mac Nally \email{Ralph.MacNally@sci.monash.edu.au}.
 }
 \references{
   Chevan, A. and Sutherland, M. 1991 Hierarchical Partitioning. \emph{The
@@ -87,7 +87,14 @@ gregmisc bundle
   influence of urban density and drainage infrastructure on the
   concentrations and loads of pollutants in small
   streams. \emph{Environmental Management} \bold{34}, 112--124.
- }
+}
+\note{
+  The function produces a minor rounding error for hierarchies
+  constructed from more than 9 variables. To check if this error affects
+  the inference from an analysis, run the analysis several times with
+  the variables entered in a different order.  There are no known
+  problems for hierarchies with 9 or fewer variables.
+  }
 \seealso{
   \code{\link{all.regs}}, \code{\link{partition}}, \code{\link{rand.hp}}
   }

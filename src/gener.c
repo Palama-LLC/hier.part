@@ -51,7 +51,7 @@ Distributor(int N)
 } /* Distributor() */
 
 void
-m_l_a__(int *n, int *r)
+F77_SUB(mla)(int *n, int *r)
 
 {
 	int	count;
@@ -73,11 +73,11 @@ m_l_a__(int *n, int *r)
 		exit(1);
 	    }
 	
-} /* m_l_a__() */
+} 
 
 
 void
-l_list__(int *n, int *r, int *j, int *kount)
+F77_SUB(llist)(int *n, int *r, int *j, int *kount)
 
 {
 	int	count;
@@ -85,7 +85,7 @@ l_list__(int *n, int *r, int *j, int *kount)
 	for (count = 1; count <= *r; count++)
 	    Iarray[*kount - 1][count] = j[count - 1];
 
-} /* l_list__() */
+} 
 
 
 
@@ -123,7 +123,7 @@ N_C_R(int allset, int sample)
 
 	return ((int)sum);
 
-} /* N_C_R() */
+} 
 
 
 

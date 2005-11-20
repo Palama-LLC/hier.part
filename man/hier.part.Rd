@@ -80,7 +80,7 @@ the gregmisc bundle
 }
 \author{
   Chris Walsh \email{Chris.Walsh@sci.monash.edu.au} using c and fortran
-  code written by Ralph MacNally \email{Ralph.MacNally@sci.monash.edu.au}.
+  code written by Ralph Mac Nally \email{Ralph.MacNally@sci.monash.edu.au}.
 }
 \references{
   Chevan, A. and Sutherland, M. 1991 Hierarchical Partitioning. \emph{The
@@ -101,6 +101,13 @@ the gregmisc bundle
   conservation significance, \emph{Austrogammarus australis}, in south-eastern
   Australia. \emph{Biodiversity and Conservation} \bold{13}, 781--793.
 }
+\note{
+  The function produces a minor rounding error for analyses with more
+  than than 9 independent variables. To check if this error affects the 
+  inference from an analysis, run the analysis several times with the 
+  variables entered in a different order.  There are no known problems
+  for analyses with 9 or fewer variables.
+  }
  \seealso{
   \code{\link{all.regs}}, \code{\link{partition}}, \code{\link{rand.hp}}
   }

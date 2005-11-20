@@ -78,7 +78,7 @@ the randomized dataset.
   reconciliation of 'predictive' and 'explanatory' models. \emph{Biodiversity
   and Conservation} \bold{9}, 655--671.
 
-  MacNally, R. 2002 Multiple regression and inference in conservation
+  Mac Nally, R. 2002 Multiple regression and inference in conservation
   biology and ecology: further comments on identifying important
   predictor variables. \emph{Biodiversity and Conservation} \bold{11},
   1397--1401.
