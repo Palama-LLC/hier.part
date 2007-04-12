@@ -9,7 +9,7 @@ else
     {
   cat("\n CAUTION! Output size increases exponentially with n. \n")
   cat(" Result for n = ", n, "will be a ", 2^n-1, "*", n, " matrix.\n")
-  cat(" Do you really want to proceed\?\n")
+  cat(" Do you really want to proceed?\n")
   choice <- menu(c("Proceed","Quit"))
   if(choice == 1)
   combos1(n)
