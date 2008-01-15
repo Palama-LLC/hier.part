@@ -1,11 +1,13 @@
 Package: hier.part
-Version: 1.0-2
-Date: 2007/04/12
+Version: 1.0-3
+Date: 2008/01/15
 Title: Hierarchical Partitioning
-Author: Chris Walsh <Chris.Walsh@sci.monash.edu.au> and 
- Ralph Mac Nally <Ralph.MacNally@sci.monash.edu.au>
-Depends: R(>= 1.9.0), gtools
+Author: Chris Walsh <cwalsh@unimelb.edu.au> and Ralph Mac Nally
+        <Ralph.MacNally@sci.monash.edu.au>
+Depends: gtools
 Description: Variance partition of a multivariate data set
-Maintainer: Chris Walsh <Chris.Walsh@sci.monash.edu.au>
+Maintainer: Chris Walsh <cwalsh@unimelb.edu.au>
 License: GPL
-Packaged: Thu Apr 12 09:59:38 2007; dacelo
+Packaged: 2012-10-29 08:58:57 UTC; ripley
+Repository: CRAN
+Date/Publication: 2012-10-29 08:58:57

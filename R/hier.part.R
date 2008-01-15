@@ -41,6 +41,7 @@ combos1 <- function(n)
 current.model <- function(y, current.comb, xcan, family = "gaussian", gof = "RMSPE")
   {
   comb.data <- data.frame(xcan[,current.comb])
+  colnames(comb.data) <- colnames(xcan)[current.comb] 
   data <- data.frame(y,comb.data)
   depv <- names(data)[1]
   n.comb <- dim(comb.data)[2]
@@ -117,8 +118,13 @@ all.regs <- function(y, xcan, family = "gaussian", gof = "RMSPE",
 partition <- function(gfs, pcan, var.names = NULL)
   {
       if(pcan >12)
-        cat("number of variables must be < 13 for current implementation\n")
-      else
+        stop("Number of variables must be < 13 for current implementation",
+             call. = FALSE)
+       else 
+       if(pcan >9)
+           warning("hier.part produces a rounding error if number of variables >9
+See documentation.",
+                   call. = FALSE)
         {
       n <- 2^pcan
       if((is.vector(gfs) && length(gfs) != n) || (!is.vector(gfs) && dim(gfs)[1] != n))
@@ -171,7 +177,8 @@ hier.part <- function(y, xcan, family = "gaussian", gof = "RMSPE",
   {
     pcan <- dim(xcan)[2]
     if(pcan >12)
-      cat("number of variables must be < 13 for current implementation\n")
+       stop("Number of variables must be < 13 for current implementation",
+             call. = FALSE)
     else
       {
     gfs <- all.regs(y, xcan, family = family, gof = gof)
