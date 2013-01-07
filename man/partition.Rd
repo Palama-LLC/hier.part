@@ -1,7 +1,7 @@
 \name{partition}
 \alias{partition}
 \title{
-  Hierarchical partitioning from a list of goodness of fit measures 
+  Hierarchical Partitioning from a List of Goodness of Fit Measures 
 }
 \description{
   Partitions variance in a multivariate dataset from a list of goodness
@@ -50,7 +50,7 @@ variables (Chevan and Sutherland 1991).
 
 At this stage, the partition routine will not run for more than 12
 independent variables. This function requires the gtools package in the
-gregmisc bundle
+gregmisc bundle.
 }
 
 \value{
@@ -75,8 +75,15 @@ gregmisc bundle
     a data frame of J as a percentage of sum of all Js
   }
 }
+\note{
+  The function produces a minor rounding error for hierarchies
+  constructed from more than 9 variables. To check if this error affects
+  the inference from an analysis, run the analysis several times with
+  the variables entered in a different order.  There are no known
+  problems for hierarchies with 9 or fewer variables.
+  }
 \author{
-  Chris Walsh \email{Chris.Walsh@sci.monash.edu.au} using c and fortran
+  Chris Walsh \email{cwalsh@unimelb.edu.au} using c and fortran
   code written by Ralph Mac Nally \email{Ralph.MacNally@sci.monash.edu.au}.
 }
 \references{
@@ -88,31 +95,24 @@ gregmisc bundle
   concentrations and loads of pollutants in small
   streams. \emph{Environmental Management} \bold{34}, 112--124.
 }
-\note{
-  The function produces a minor rounding error for hierarchies
-  constructed from more than 9 variables. To check if this error affects
-  the inference from an analysis, run the analysis several times with
-  the variables entered in a different order.  There are no known
-  problems for hierarchies with 9 or fewer variables.
-  }
 \seealso{
   \code{\link{all.regs}}, \code{\link{partition}}, \code{\link{rand.hp}}
   }
  \examples{
-           #linear regression of log(electrical conductivity) in streams
-           #against seven independent variables describing catchment
-           #characteristics (from Hatt et al. 2004)
-           data(urbanwq)
-           env <- urbanwq[,2:8]
-           gofs <- all.regs(urbanwq$lec, env, fam = "gaussian",
-           gof = "Rsqu", print.vars = TRUE)
-           partition(gofs, pcan = 7, var.names = names(urbanwq[,2,8]))
+    #linear regression of log(electrical conductivity) in streams
+    #against seven independent variables describing catchment
+    #characteristics (from Hatt et al. 2004).
 
-           #hierarchical partitioning of logistic and linear regression
-           #goodness of fit measures from Chevan and Sutherland (1991) 
-           data(chevan)
-           partition(chevan$chisq, pcan = 4)
-           partition(chevan$rsqu, pcan = 4)
+    data(urbanwq)
+    env <- urbanwq[,2:8]
+    gofs <- all.regs(urbanwq$lec, env, fam = "gaussian",
+    gof = "Rsqu", print.vars = TRUE)
+    partition(gofs, pcan = 7, var.names = names(urbanwq[,2,8]))
+
+    #hierarchical partitioning of logistic and linear regression
+    #goodness of fit measures from Chevan and Sutherland (1991).
+
+    data(chevan)
+    partition(chevan$chisq, pcan = 4)
+    partition(chevan$rsqu, pcan = 4)
 }
-\keyword{}
-

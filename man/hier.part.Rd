@@ -1,13 +1,14 @@
 \name{hier.part}
 \alias{hier.part}
 \title{
-  Goodness of fit calculation and hierarchical partitioning
+  Goodness of Fit Calculation and Hierarchical Partitioning
 }
 \description{
   Partitions variance in a multivariate dataset
 }
 \usage{
-hier.part(y, xcan, family = "gaussian", gof = "RMSPE", barplot = TRUE)
+hier.part(y, xcan, family = "gaussian", gof = "RMSPE",
+          barplot = TRUE)
 }
 \arguments{
   \item{y}{
@@ -57,7 +58,7 @@ variables (Chevan and Sutherland 1991).
 
 At this stage, the partition routine will not run for more than 12
 independent variables. This function requires the gtools package in
-the gregmisc bundle 
+the gregmisc bundle. 
 }
 
 \value{
@@ -78,8 +79,15 @@ the gregmisc bundle
     a data frame of I as a percentage of total explained variance
   }
 }
+\note{
+  The function produces a minor rounding error for analyses with more
+  than than 9 independent variables. To check if this error affects the 
+  inference from an analysis, run the analysis several times with the 
+  variables entered in a different order.  There are no known problems
+  for analyses with 9 or fewer variables.
+  }
 \author{
-  Chris Walsh \email{Chris.Walsh@sci.monash.edu.au} using c and fortran
+  Chris Walsh \email{cwalsh@unimelb.edu.au} using c and fortran
   code written by Ralph Mac Nally \email{Ralph.MacNally@sci.monash.edu.au}.
 }
 \references{
@@ -101,30 +109,27 @@ the gregmisc bundle
   conservation significance, \emph{Austrogammarus australis}, in south-eastern
   Australia. \emph{Biodiversity and Conservation} \bold{13}, 781--793.
 }
-\note{
-  The function produces a minor rounding error for analyses with more
-  than than 9 independent variables. To check if this error affects the 
-  inference from an analysis, run the analysis several times with the 
-  variables entered in a different order.  There are no known problems
-  for analyses with 9 or fewer variables.
-  }
  \seealso{
   \code{\link{all.regs}}, \code{\link{partition}}, \code{\link{rand.hp}}
-  }
- \examples{
-           #linear regression of log(electrical conductivity) in streams
-           #against seven independent variables describing catchment
-           #characteristics (from Hatt et al. 2004)
-           data(urbanwq)
-           env <- urbanwq[,2:8]
-           hier.part(urbanwq$lec, env, fam = "gaussian", gof = "Rsqu")
-
-           #logistic regression of an amphipod species occurrence in
-           #streams against four independent variables describing
-           #catchment characteristics (from Walsh et al. 2004)
-           data(amphipod)
-           env1 <- amphipod[,2:5]
-           hier.part(amphipod$australis, env1, fam = "binomial", gof = "logLik")
 }
-\keyword{}
 
+ \examples{
+    #linear regression of log(electrical conductivity) in 
+    #streams against seven independent variables 
+    #describing catchment characteristics (from
+    #Hatt et al. 2004)
+
+    data(urbanwq)
+    env <- urbanwq[,2:8]
+    hier.part(urbanwq$lec, env, fam = "gaussian", gof = "Rsqu")
+
+    #logistic regression of an amphipod species occurrence in
+    #streams against four independent variables describing
+    #catchment characteristics (from Walsh et al. 2004).
+
+    data(amphipod)
+    env1 <- amphipod[,2:5]
+    hier.part(amphipod$australis, env1, fam = "binomial",
+              gof = "logLik")
+}
+ \keyword{regression}

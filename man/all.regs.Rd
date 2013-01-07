@@ -1,14 +1,15 @@
 \name{all.regs}
 \alias{all.regs}
 \title{
-  Goodness of fit measures for a regression hierarchy
+  Goodness of Fit Measures for a Regression Hierarchy
 }
 \description{
   Calculates goodness of fit measures for regressions of a single
   dependent variable to all combinations of N independent variables
 }
 \usage{
-all.regs(y, xcan, family = "gaussian", gof = "RMSPE", print.vars = FALSE)
+all.regs(y, xcan, family = "gaussian", gof = "RMSPE",
+         print.vars = FALSE)
 }
 \arguments{
   \item{y}{
@@ -54,7 +55,7 @@ the gregmisc bundle
   }
 }
 \author{
-  Chris Walsh \email{Chris.Walsh@sci.monash.edu.au}.
+  Chris Walsh \email{cwalsh@unimelb.monash.edu.au}.
 }
 
 \references{
@@ -73,21 +74,22 @@ the gregmisc bundle
   \code{\link{hier.part}}, \code{\link{partition}}, \code{\link{rand.hp}}
   }
  \examples{
-           #linear regression of log(electrical conductivity) in streams
-           #against seven independent variables describing catchment
-           #characteristics (from Hatt et al. 2004)
-           data(urbanwq)
-           env <- urbanwq[,2:8]
-           all.regs(urbanwq$lec, env, fam = "gaussian", gof = "Rsqu",
-           print.vars = TRUE)
+    #linear regression of log(electrical conductivity) in streams
+    #against seven independent variables describing catchment
+    #characteristics (from Hatt et al. 2004).
 
-           #logistic regression of an amphipod species occurrence in
-           #streams against four independent variables describing
-           #catchment characteristics (from Walsh et al. 2004)
-           data(amphipod)
-           env1 <- amphipod[,2:5]
-           all.regs(amphipod$australis, env1, fam = "binomial",
-	   gof = "logLik", print.vars = TRUE)
+    data(urbanwq)
+    env <- urbanwq[,2:8]
+    all.regs(urbanwq$lec, env, fam = "gaussian", gof = "Rsqu",
+             print.vars = TRUE)
+
+    #logistic regression of an amphipod species occurrence in
+    #streams against four independent variables describing
+    #catchment characteristics (from Walsh et al. 2004).
+
+    data(amphipod)
+    env1 <- amphipod[,2:5]
+    all.regs(amphipod$australis, env1, fam = "binomial",
+             gof = "logLik", print.vars = TRUE)
 }
-\keyword{}
-
+\keyword{regression}

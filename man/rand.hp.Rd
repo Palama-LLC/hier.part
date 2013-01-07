@@ -1,7 +1,7 @@
 \name{rand.hp}
 \alias{rand.hp}
 \title{
-  Randomization test for hierarchical partitioning
+  Randomization Test for Hierarchical Partitioning
 }
 \description{
   Randomizes elements in each column in xcan and recalculates
@@ -39,7 +39,7 @@
 This function is a randomization routine for the \code{hier.part}
 function which returns a matrix of I values (the independent
 contribution towards explained variance in a multivariate dataset) for
-all values from "num.reps" randomizations. For each randomization, the
+all values from num.reps randomizations. For each randomization, the
 values in each variable (i.e each column of xcan) are randomized
 independently, and hier.part is run on the randomized xcan.  As well as
 the randomized I matrix, the function returns a summary table listing
@@ -65,7 +65,7 @@ the randomized dataset.
     }
 }
 \author{
-  Chris Walsh \email{Chris.Walsh@sci.monash.edu.au}.
+  Chris Walsh \email{cwalsh@unimelb.edu.au}.
 }
 \references{
   Hatt, B. E., Fletcher, T. D., Walsh, C. J. and Taylor, S. L. 2004 The
@@ -92,22 +92,23 @@ the randomized dataset.
 \seealso{
   \code{\link{hier.part}}, \code{\link{partition}}
   }
-  \examples{
-           #linear regression of log(electrical conductivity) in streams
-           #against four independent variables describing catchment
-           #characteristics (from Hatt et al. 2004)
-           data(urbanwq)
-           env <- urbanwq[,2:5]
-           rand.hp(urbanwq$lec, env, fam = "gaussian", gof = "Rsqu")$Iprobs
 
-           #logistic regression of an amphipod species occurrence in
-           #streams against four independent variables describing
-           #catchment characteristics (from Walsh et al. 2004)
-           data(amphipod)
-           env1 <- amphipod[,2:5]
-           rand.hp(amphipod$australis, env1, fam = "binomial",
-           gof = "logLik")$Iprobs
+\examples{
+    #linear regression of log(electrical conductivity) in streams
+    #against four independent variables describing catchment
+    #characteristics (from Hatt et al. 2004).
+
+    data(urbanwq)
+    env <- urbanwq[,2:5]
+    rand.hp(urbanwq$lec, env, fam = "gaussian", gof = "Rsqu")$Iprobs
+
+    #logistic regression of an amphipod species occurrence in
+    #streams against four independent variables describing
+    #catchment characteristics (from Walsh et al. 2004).
+
+    data(amphipod)
+    env1 <- amphipod[,2:5]
+    rand.hp(amphipod$australis, env1, fam = "binomial",
+    gof = "logLik")$Iprobs
 }
-
-\keyword{}
 

@@ -4,6 +4,9 @@
 # Export all names
 exportPattern(".")
 
+# Register shared object for loading with library.dynam
+useDynLib(hier.part)
+
 # Import all packages listed as Imports or Depends
 import(
   gtools

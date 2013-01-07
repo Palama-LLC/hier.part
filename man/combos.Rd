@@ -1,7 +1,8 @@
+
 \name{combos}
 \alias{combos}
 \title{
-  All combinations of a hierarchy of models of n variables
+  All Combinations of a Hierarchy of Models of n Variables
 }
 \description{
   Lists a matrix of combinations of 1 to n variables in ascending order
@@ -36,12 +37,10 @@ the gregmisc bundle.
     }
 }
 \author{
-  Chris Walsh \email{Chris.Walsh@sci.monash.edu.au} 
+  Chris Walsh \email{cwalsh@unimelb.edu.au} 
 }
 
 \seealso{
   \code{\link{all.regs}}
   }
-
-\keyword{}
 

@@ -17,12 +17,12 @@ Distributor(int N)
 	allset = N;
 
 	/* some work space for allnr_ to use */
-	if ((locstore = (int *) malloc (N * sizeof(int)))
+		if ((locstore = (int *) malloc (N * sizeof(int)))
 	    == (int *) NULL)
 	{
-	    fprintf(stderr, "bestreg:Distributor: allocation failed (%d)\n", N);
-	    exit(1);
-	}
+	  REprintf("bestreg:Distributor: allocation failed (%d)\n", N);
+	  /* exit(1); */
+	       } 
 
 	for (subset = 1; subset <= N; subset++)
 	{
@@ -62,16 +62,16 @@ F77_SUB(mla)(int *n, int *r)
 	if ((Iarray = (int **) malloc (combos * sizeof(int *)))
 		== (int **) NULL)
 	{
-	    fprintf(stderr, "hierpart:make_array_list: allocation failed\n");
-	    exit(1);
+	    REprintf("hierpart:make_array_list: allocation failed\n");
+	    /* exit(1); */
 	}
 	for (count = 0; count < combos; count++)
 	    if ((Iarray[count] = (int *) malloc ((*r + 1) * sizeof(int)))
 		    == (int *) NULL)
 	    {
-		fprintf(stderr, "bestreg:make_array_list: allocation failed\n");
-		exit(1);
-	    }
+		REprintf("bestreg:make_array_list: allocation failed\n");
+		/*	exit(1); */
+			} 
 	
 } 
 

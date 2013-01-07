@@ -3,7 +3,7 @@
 \alias{amphipod}
 \alias{chevan}
 \title{
-  Example data for hier.part
+  Example Data for hier.part
 }
 \description{
   Example data sets for hier.part package.
@@ -36,7 +36,7 @@
     chevan.txt
 
     Chi-squared (chisq) and R-squared (rsqu) for logistic and linear
-    regression example from Chevan and Sutherland (1991)
+    regression example from Chevan and Sutherland (1991).
 }
 \references{
   Chevan, A. and Sutherland, M. 1991 Hierarchical Partitioning. \emph{The
@@ -54,12 +54,10 @@
 
 }
 \author{
-  Chris Walsh \email{Chris.Walsh@sci.monash.edu.au}
+  Chris Walsh \email{cwalsh@unimelb.edu.au}
 }
+
 \keyword{datasets}
-
-
-
 
 
 
