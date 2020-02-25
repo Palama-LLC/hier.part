@@ -7,7 +7,7 @@ c        from a group of N items.  Each combination (represented in j as
 c        r ordered integers between 1 and n) is processed within allnr.
 c
 c        Parameters:-
-c       
+c
 c        n        integer             input:  The size of the group from which
 c                                             the combinations are selected.
 c

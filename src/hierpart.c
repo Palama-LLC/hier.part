@@ -35,21 +35,21 @@ DIAGNOSTICS
 SEE_ALSO_
 F77_SYNOPSIS
 PARAMETERS
-NOTES		This implementation of hierpart has been re-written 
-                by Chris Walsh, August 2002 to permit use by the program
-                R, in the package hier.part
+NOTES		This implementation of hierpart was updated 
+                by Chris Walsh and Ralph Mac Nally with advice
+		from Aleck Mac Nally in February 2020 for
+                the hier.part package in R
 FEATURES
 WARNINGS
 TABLES_
 VERSION_
 CAVEATS
 BUGS
-IDENTIFICATION	Ralph C. Mac Nally, January 1994
-ORIGIN		School of Biological Sciences
-		Monash University 3800,
+IDENTIFICATION	Ralph Mac Nally, February 2020
+ORIGIN		Sunrise Ecological Research Institute
+		Ocean Grove, Victoria
 	        Australia.
 
-		\\(co Monash University
 ENDDOC
 
 === === === === === === === === === === === === === === === === === === === */

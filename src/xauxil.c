@@ -1,6 +1,8 @@
+#include <R.h>
+#include <Rinternals.h>
 #include "hierpart.h"
 
-/* === === === === === === === === === === === === === === === === === 
+/* === === === === === === === === === === === === === === === === ===
 	Factorial(): Calculate N!
 === === === === === === === === === === === === === === === === === */
 
@@ -20,7 +22,7 @@ Factorial(int N)
 
 } /* Factorial() */
 
-/* === === === === === === === === === === === === === === === === === 
+/* === === === === === === === === === === === === === === === === ===
 	Combos(): Calculate NCR
 === === === === === === === === === === === === === === === === === */
 
@@ -47,7 +49,7 @@ Combos(int N, int n)
 
 } /* Combos */
 
-/* === === === === === === === === === === === === === === === === === 
+/* === === === === === === === === === === === === === === === === ===
 	Acquire(): Read input goodnesses-of-fit
 === === === === === === === === === === === === === === === === === */
 
@@ -57,7 +59,7 @@ Acquire(int N, double *fin)
 {
 
 	int	i, j, goodreads, allcombs;
- 
+
 
 	d = (DARRAY *) malloc ((N + 1) * sizeof(DARRAY));
 	if (d == (DARRAY *) NULL)
@@ -72,7 +74,7 @@ Acquire(int N, double *fin)
 	    if (d[i].m == (ENTRY *) NULL)
 		return(FALSE);
 	    for (j = 1; j <= d[i].size; j++)
-	      {	    
+	      {
             d[i].m[j].X = *fin++;
 	    /*    Rprintf("i = %d, j = %d, entry = %lf\n", i, j, d[i].m[j].X);*/
 	      }
@@ -82,7 +84,7 @@ Acquire(int N, double *fin)
 } /* Acquire() */
 
 
-/* === === === === === === === === === === === === === === === === === === 
+/* === === === === === === === === === === === === === === === === === ===
 
 	Partition(): the engine room where it all happens - have
 		data and index combinations all loaded in `d'.
@@ -114,8 +116,8 @@ Partition(int N, double Rtheta, double IJ[])
 		factor = 1.0 * Factorial(level - 1) * Factorial(N - level);
 		sum += factor * ReturnDiff(level, var);
 
-	    } /* for level ... 
-		
+	    } /* for level ...
+
 	    IJ[0][var-1] = I[var] = sum / Factorial(N);
 	    IJ[2][var-1] = J[var] = (d[1].m[var].X - Rtheta - I[var]);
 	      */
@@ -128,7 +130,7 @@ Partition(int N, double Rtheta, double IJ[])
 	    Rprintf("Var%d \t%4.3lf\t%4.3lf\t%4.3lf\n",
 	    var, I[var], J[var], I[var] + J[var]);
 	    }*/
-	
+
 } /* Partition() */
 
 

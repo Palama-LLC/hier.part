@@ -3,9 +3,9 @@
 \alias{current.model}
 
 \title{
-  Internal functions for hier.part
+  Internal functions for hier.part package
 }
 \description{
-  Internal functions for hier.part
+  Internal functions for hier.part package
 }
 \keyword{internal}

@@ -30,7 +30,7 @@
 #endif
 
 #ifndef STRLEN
-#define STRLEN 64
+#define STRLEN 1024
 #endif
 
 

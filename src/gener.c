@@ -1,9 +1,11 @@
+#include <R.h>
+#include <Rinternals.h>
 #include "hierpart.h"
 
 static int	combos;
 
 
-/* === === === === === === === === === === === === === === === === === 
+/* === === === === === === === === === === === === === === === === ===
 	Distributor - need to produce all > 1 combinations
 === === === === === === === === === === === === === === === === === */
 
@@ -11,42 +13,66 @@ void
 Distributor(int N)
 
 {
-	int	i, j, bead, allset, subset, *locstore, err;
-	char	phrase[STRLEN];
+	int	i, j, bead, allset, subset, *locstore, psize, err;
+	char	*phrase, *phrase_t;
 
 	allset = N;
 
+	/* allocate space for 'phrase' */
+	/* & assign generous amount */
+	psize = (int)(10 * N);
+
+	if ((phrase = (char *) malloc (psize * sizeof(char)))
+	    == (char *) NULL)
+	{
+	  REprintf("bestreg:Distributor: allocation failed (%d)\n", N);
+	  /* exit(1); */
+	}
+
+	if ((phrase_t = (char *) malloc (psize * sizeof(char)))
+            == (char *) NULL)
+	{
+		REprintf("bestreg:Distributor: allocation failed (%d)\n", N);
+		/* exit(1); */
+	}
+
+
 	/* some work space for allnr_ to use */
-		if ((locstore = (int *) malloc (N * sizeof(int)))
+	if ((locstore = (int *) malloc (N * sizeof(int)))
 	    == (int *) NULL)
 	{
 	  REprintf("bestreg:Distributor: allocation failed (%d)\n", N);
 	  /* exit(1); */
-	       } 
+	       }
 
 	for (subset = 1; subset <= N; subset++)
 	{
 	    F77_CALL(allnr)(&allset, &subset, locstore, &err);
 	    for (i = 0; i < combos; i++)
 	    {
-		/* clear string index */
-		for (bead = 0; bead < STRLEN; bead++)
+		/* clear string indices */
+		for (bead = 0; bead < psize; bead++)
+		{
 		    phrase[bead] = '\0';
+	            phrase_t[bead] = '\0';
+		}
 
 		for (j = 1; j <= subset; j++)
 		{
 		    d[subset].m[i + 1].pt[j] = Iarray[i][j];
-		  sprintf(phrase, "%s%d", phrase, Iarray[i][j]);
+	            sprintf(phrase_t, "%s", phrase);
+		    sprintf(phrase, "%s%d", phrase_t, Iarray[i][j]);
 		}
 	      sprintf(d[subset].m[i + 1].idx, "%s", phrase);
 	    }
 	    delete_list_array(&allset, &subset);
 	}
 
-
-	/* deallocate regression storage */
-
+	/* deallocate malloced storage */
 	free(locstore);
+	free(phrase);
+	free(phrase_t);
+
 
 } /* Distributor() */
 
@@ -71,9 +97,9 @@ F77_SUB(mla)(int *n, int *r)
 	    {
 		REprintf("bestreg:make_array_list: allocation failed\n");
 		/*	exit(1); */
-			} 
-	
-} 
+			}
+
+}
 
 
 void
@@ -85,7 +111,7 @@ F77_SUB(llist)(int *n, int *r, int *j, int *kount)
 	for (count = 1; count <= *r; count++)
 	    Iarray[*kount - 1][count] = j[count - 1];
 
-} 
+}
 
 
 
@@ -102,7 +128,7 @@ delete_list_array(int *n, int *r)
 	    free(Iarray[count]);
 
 	free(Iarray);
-	
+
 } /* delete_list_array() */
 
 int
@@ -123,7 +149,7 @@ N_C_R(int allset, int sample)
 
 	return ((int)sum);
 
-} 
+}
 
 
 

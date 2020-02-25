@@ -21,8 +21,7 @@ Lists hierarchy of all possible combinations of n variables in ascending
 order, starting with 1 variable, then all combinations of 2 variables,
 and so on until the one combination with all n variables.  This function
 is used by \code{all.regs} to structure the models required for
-hierarchical partioning.  This function requires the gtools package in
-the gregmisc bundle.
+hierarchical partitioning.
 }
 
 \value{
@@ -37,7 +36,7 @@ the gregmisc bundle.
     }
 }
 \author{
-  Chris Walsh \email{cwalsh@unimelb.edu.au} 
+  Chris Walsh \email{cwalsh@unimelb.edu.au}
 }
 
 \seealso{

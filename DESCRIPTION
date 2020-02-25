@@ -1,15 +1,26 @@
 Package: hier.part
-Version: 1.0-4
-Date: 2013-01-07
+Type: Package
 Title: Hierarchical Partitioning
-Authors@R: c(person("Chris", "Walsh", role = c("aut","cre"), email =
-        "cwalsh@unimelb.edu.au"), person("Ralph", "Mac Nally", role =
-        "aut", email = "Ralph.MacNally@sci.monash.edu.au"))
-Author: Chris Walsh and Ralph Mac Nally
-Depends: gtools
-Description: Variance partition of a multivariate data set
-Maintainer: Chris Walsh <cwalsh@unimelb.edu.au>
+Description: Partitioning of the independent and joint contributions of each
+    variable in a multivariate data set, to a linear regression by hierarchical
+    decomposition of goodness-of-fit measures of regressions using all subsets 
+    of predictors in the data set. (i.e., model (1), (2), ..., (N), (1,2), ...,
+    (1,N), ..., (1,2,3,...,N)). A Z-score based estimate of the 'importance' of
+    each predictor is provided by using a randomisation test.
+Version: 1.0-5
+Authors@R: c(person("Chris", "Walsh", role = c("aut","cre"),
+             email = "cwalsh@unimelb.edu.au"),
+             person("Ralph", "Mac Nally", role = "aut",
+             email = "Ralph.MacNally@gmail.com"))
+Imports: gtools, betareg, MASS
+BugReports: https://github.com/cjbwalsh/hier.part/issues
 License: GPL
-Packaged: 2013-01-08 10:03:02 UTC; root
+Encoding: UTF-8
+LazyData: true
+NeedsCompilation: yes
+Packaged: 2020-02-25 08:11:49 UTC; cwalsh
+Author: Chris Walsh [aut, cre],
+  Ralph Mac Nally [aut]
+Maintainer: Chris Walsh <cwalsh@unimelb.edu.au>
 Repository: CRAN
-Date/Publication: 2013-01-08 11:25:26
+Date/Publication: 2020-02-25 08:30:02 UTC

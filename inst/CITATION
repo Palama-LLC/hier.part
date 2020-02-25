@@ -1,0 +1,18 @@
+citHeader("To cite hier.part in publications use:")
+
+citEntry(entry = "Article",
+         title        = "Hierarchical partitioning public-domain software.",
+         author       = personList(as.person("Ralph Mac Nally"),
+                                   as.person("Christopher J Walsh")),
+         journal      = "Biodiversity and Conservation",
+         year         = "2004",
+         volume       = "13",
+         pages        = "659–-660.",
+         url          = "https://search.proquest.com/openview/6f19c4d612b6cf75b106c479e7084a58/1",
+
+         textVersion  =
+           paste("Ralph Mac Nally and Christopher J. Walsh (2004).",
+                 "Hierarchical partitioning public-domain software.",
+                 "Biodiversity and Conservation, 13, 659-660.",
+                 "URL https://search.proquest.com/openview/6f19c4d612b6cf75b106c479e7084a58/1.")
+)

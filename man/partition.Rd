@@ -1,7 +1,7 @@
 \name{partition}
 \alias{partition}
 \title{
-  Hierarchical Partitioning from a List of Goodness of Fit Measures 
+  Hierarchical Partitioning from a List of Goodness of Fit Measures
 }
 \description{
   Partitions variance in a multivariate dataset from a list of goodness
@@ -17,12 +17,12 @@ partition(gfs, pcan, var.names = NULL)
     variables in ascending order (as produced by function \code{combos},
     but also including the null model as the first element)
   }
-  
+
   \item{pcan}{
     the number of variables from which the hierarchy was constructed
     (maximum = 12)
   }
-  
+
   \item{var.names}{
     an array of pcan variable names, if required
   }
@@ -49,14 +49,13 @@ effects are possible for variables that act as suppressors of other
 variables (Chevan and Sutherland 1991).
 
 At this stage, the partition routine will not run for more than 12
-independent variables. This function requires the gtools package in the
-gregmisc bundle.
+independent variables.
 }
 
 \value{
   a list containing
   \item{gfs}{
-    a data frame listing all combinations of independent
+    a data frame listing all combinations of predictor
     variables in the first column in ascending order, and the
     corresponding goodness of fit measure for the model using those
     variables
@@ -64,13 +63,13 @@ gregmisc bundle.
 
   \item{IJ}{
     a data frame of I, the independent and J the joint
-    contribution for each independent variable
+    contribution for each predictor variable
   }
 
   \item{I.perc}{
     a data frame of I as a percentage of total explained variance
   }
-  
+
   \item{J.perc}{
     a data frame of J as a percentage of sum of all Js
   }
@@ -84,7 +83,7 @@ gregmisc bundle.
   }
 \author{
   Chris Walsh \email{cwalsh@unimelb.edu.au} using c and fortran
-  code written by Ralph Mac Nally \email{Ralph.MacNally@sci.monash.edu.au}.
+  code written by Ralph Mac Nally \email{Ralph.MacNally@gmail.com}.
 }
 \references{
   Chevan, A. and Sutherland, M. 1991 Hierarchical Partitioning. \emph{The
