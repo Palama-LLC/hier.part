@@ -7,7 +7,7 @@ Description: Partitioning of the independent and joint contributions of each
     of predictors in the data set. (i.e., model (1), (2), ..., (N), (1,2), ...,
     (1,N), ..., (1,2,3,...,N)). A Z-score based estimate of the 'importance' of
     each predictor is provided by using a randomisation test.
-Version: 1.0-5
+Version: 1.0-6
 Authors@R: c(person("Chris", "Walsh", role = c("aut","cre"),
              email = "cwalsh@unimelb.edu.au"),
              person("Ralph", "Mac Nally", role = "aut",
@@ -18,9 +18,9 @@ License: GPL
 Encoding: UTF-8
 LazyData: true
 NeedsCompilation: yes
-Packaged: 2020-02-25 08:11:49 UTC; cwalsh
+Packaged: 2020-03-03 06:18:58 UTC; cwalsh
 Author: Chris Walsh [aut, cre],
   Ralph Mac Nally [aut]
 Maintainer: Chris Walsh <cwalsh@unimelb.edu.au>
 Repository: CRAN
-Date/Publication: 2020-02-25 08:30:02 UTC
+Date/Publication: 2020-03-03 07:10:03 UTC

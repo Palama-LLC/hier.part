@@ -29,10 +29,26 @@ combos1 <- function(n) {
 }
 
 current.model <- function(y, current.comb, xcan,
+                          family = c("gaussian", "binomial", "Gamma",
+                                     "inverse.gaussian", "poisson","quasi",
+                                     "quasibinomial","quasipoisson","beta","ordinal"),
                           link = c("logit", "probit", "cloglog", "cauchit", "loglog"),
-                          family = "gaussian",
-                          gof = "Rsqu", ...) {
-    if (family != "gaussian" & gof == "Rsqu") {
+                          gof = c("Rsqu", "RMSPE", "logLik"),
+                           ...) {
+  if (length(family) > 1) family <- family[1]
+  if (length(link) > 1) link <- link[1]
+  if (length(gof) > 1) gof <- gof[1]
+  if (sum(is.na(xcan)) > 0) {
+    missing <- is.na(apply(xcan,1,FUN = sum))
+    xcan <- xcan[!missing,]
+    y <- y[!missing]
+  }
+  if (sum(is.na(y)) > 0) {
+    missing <- is.na(y)
+    xcan <- xcan[!missing,]
+    y <- y[!missing]
+  }
+  if (family != "gaussian" & gof == "Rsqu") {
         stop("R-squared is only appropriate if family = 'gaussian'", call. = FALSE)
     }
     comb.data <- data.frame(xcan[, current.comb])
@@ -46,9 +62,9 @@ current.model <- function(y, current.comb, xcan,
     xs[n.comb] <- names(comb.data)[n.comb]
     xss <- paste(xs, collapse = " ", sep = "")
     formu <- stats::formula(paste(depv, "~", xss, sep = ""))
-    if (gof == "RMSPE")
+    if (gof == "RMSPE") {
       if (family == "beta") {
-          gf <- sqrt(sum((betareg(formu, family = family,
+          gf <- sqrt(sum((betareg::betareg(formu, family = family,
                                      link = link, ...)$fitted.values - y)^2))
         }
       if (family == "ordinal") {
@@ -61,9 +77,10 @@ current.model <- function(y, current.comb, xcan,
           gf <- sqrt(sum((stats::glm(formu, data = data,
                             family = family, ...)$fitted.values - y)^2))
        }
+      }
     if (gof == "logLik") {
        if (family == "beta") {
-         gf <- as.vector(stats::logLik(betareg(formu, data = data,
+         gf <- as.vector(stats::logLik(betareg::betareg(formu, data = data,
                                         family = family, link = link, ...)))
             }
        if (family == "ordinal") {
@@ -86,18 +103,33 @@ current.model <- function(y, current.comb, xcan,
 all.regs <- function(y, xcan,
                      family = c("gaussian", "binomial", "Gamma",
                                 "inverse.gaussian", "poisson","quasi",
-                                "quasibinomial","quasipossion","beta","ordinal"),
+                                "quasibinomial","quasipoisson","beta","ordinal"),
                      link = c("logit", "probit", "cloglog", "cauchit", "loglog"),
                      gof = c("Rsqu", "RMSPE", "logLik"),
                      print.vars = FALSE, ...) {
-    if (!family %in% c("gaussian", "binomial", "Gamma", "inverse.gaussian",
-                      "poisson", "quasi", "quasibinomial","quasipossion",
+  if (length(family) > 1) family <- family[1]
+  if (length(link) > 1) link <- link[1]
+  if (length(gof) > 1) gof <- gof[1]
+  if (sum(is.na(xcan)) > 0) {
+    missing <- is.na(apply(xcan,1,FUN = sum))
+    xcan <- xcan[!missing,]
+    y <- y[!missing]
+    warning(paste(sum(missing), "observations deleted due to missingness in xcan\n"), call. = FALSE)
+  }
+  if (sum(is.na(y)) > 0) {
+    missing <- is.na(y)
+    xcan <- xcan[!missing,]
+    y <- y[!missing]
+    warning(paste(sum(missing), "observations deleted due to missingness in y\n"), call. = FALSE)
+  }
+  if (!family %in% c("gaussian", "binomial", "Gamma", "inverse.gaussian",
+                      "poisson", "quasi", "quasibinomial","quasipoisson",
                       "beta","ordinal")) {
         stop("The 'family' argument must equal one of 'gaussian', 'binomial',
               'Gamma', 'inverse.gaussian','poisson', 'quasi', 'quasibinomial',
-              'quasipossion', 'beta', or 'ordinal'", call. = FALSE)
+              'quasipoisson', 'beta', or 'ordinal'", call. = FALSE)
         }
-    if (family != "gaussian" & gof == "Rsqu") {
+  if (family != "gaussian" & gof == "Rsqu") {
         stop("The 'gof' argument can only equal R-squared
              if family = 'gaussian'", call. = FALSE)
     }
@@ -115,7 +147,7 @@ all.regs <- function(y, xcan,
     } else {
       if (gof == "RMSPE") {
         if (family == "beta") {
-            gfs <- sqrt(sum((betareg(y ~ 1, family = family,
+            gfs <- sqrt(sum((betareg::betareg(y ~ 1, family = family,
                                      link = link, ...)$fitted.values - y)^2))
             }
         if (family == "ordinal") {
@@ -128,9 +160,9 @@ all.regs <- function(y, xcan,
             gfs <- sqrt(sum((stats::glm(y ~ 1, family = family, ...)$fitted.values - y)^2))
         }
           }
-       if (gof == "logLik")
+       if (gof == "logLik") {
         if (family == "beta") {
-            gfs <- as.vector(stats::logLik(betareg(y ~ 1, family = family,
+            gfs <- as.vector(stats::logLik(betareg::betareg(y ~ 1, family = family,
                                          link = link, ...)))
             }
         if (family == "ordinal") {
@@ -142,6 +174,7 @@ all.regs <- function(y, xcan,
         if (!family %in% c("beta","ordinal")) {
             gfs <- as.vector(stats::logLik(stats::glm(y ~ 1, family = family, ...)))
         }
+         }
         if (gof == "Rsqu")
             gfs <- 0
     }
@@ -228,7 +261,10 @@ hier.part <- function(y, xcan,
                       gof = c("Rsqu", "RMSPE", "logLik"),
                       barplot = TRUE,
                       ...) {
-    pcan <- dim(xcan)[2]
+  if (length(family) > 1) family <- family[1]
+  if (length(link) > 1) link <- link[1]
+  if (length(gof) > 1) gof <- gof[1]
+  pcan <- dim(xcan)[2]
     if (pcan > 12)
         stop("Number of variables must be < 13 for current implementation",
              call. = FALSE) else {
@@ -240,7 +276,11 @@ hier.part <- function(y, xcan,
             barplot(t(hp$I.perc), col = c(1), ylim = c(ymin, ymax),
                     ylab = "% Independent effects (%I)")
         }
-        list(gfs = gfs, IJ = hp$IJ, I.perc = hp$I.perc)
+        params <- list(full.model = paste("y ~", paste(names(xcan), collapse = " + ")),
+                       family = family,
+                       link = ifelse(family %in% c("beta","ordinal"), link, "default"),
+                       gof = gof)
+        list(gfs = gfs, IJ = hp$IJ, I.perc = hp$I.perc, params = params)
     }
 }
 
@@ -251,7 +291,10 @@ rand.hp <- function(y, xcan,
                     link = c("logit", "probit", "cloglog", "cauchit", "loglog"),
                     gof = c("Rsqu", "RMSPE", "logLik"),
                     num.reps = 100, ...) {
-    cat("\nPlease wait: running", num.reps, "randomizations \n")
+  if (length(family) > 1) family <- family[1]
+  if (length(link) > 1) link <- link[1]
+  if (length(gof) > 1) gof <- gof[1]
+  cat("\nPlease wait: running", num.reps, "randomizations \n")
     ij <- hier.part(y, xcan, family = family, gof = gof, barplot = FALSE)$IJ
     var.names <- row.names(ij)
     i.rands <- data.frame(Obs = ij[, 1], row.names = var.names)

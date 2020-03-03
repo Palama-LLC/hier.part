@@ -101,6 +101,11 @@ hier.part(y, xcan,
   \item{I.perc}{
     a data frame of I as a percentage of total explained variance
   }
+
+  \item{params}{
+    a list of parameters used in the analysis, comprising:
+    full.model formula, family, link, and gof.
+  }
 }
 \note{
   The function produces a minor rounding error for analyses with more

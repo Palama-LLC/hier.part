@@ -15,6 +15,9 @@ rand.hp() performs a randomization test that allows an Z-score
 assessment of the ‘importance’ of each predictor in explaining variation
 in the response variable.
 
+The current version on CRAN is 1.0-5 (commit 8f8865da6a).
+A beta version of 1.0-6 (minor corrections) on github
+
 ## Installation
 
 Through [CRAN](https://cran.r-project.org/package=hier.part)
